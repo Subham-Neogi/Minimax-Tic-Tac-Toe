@@ -381,64 +381,26 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
   position: relative; }
   #sidebar #charachters .human {
-    width: 60px;
+    width: 120px;
     position: relative; }
-    #sidebar #charachters .human .lh {
-      position: absolute;
-      width: 46%;
-      top: 48%;
-      left: -17%;
-      transform-origin: 100% 0;
-      transition: 0.5s; }
-    #sidebar #charachters .human .rh {
-      position: absolute;
-      width: 46%;
-      top: 49%;
-      right: -17%;
-      transform-origin: 0 0;
-      transition: 0.5s; }
-    #sidebar #charachters .human .mouth {
-      position: absolute;
-      top: 31.5%;
-      width: 26%;
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-      display: none; }
-    #sidebar #charachters .human .die {
-      position: absolute;
-      top: 23%;
-      display: flex;
-      width: 86%;
-      justify-content: space-around;
-      margin-left: 9%;
-      opacity: 0;
-      transition: 0.1s; }
-      #sidebar #charachters .human .die:before, #sidebar #charachters .human .die:after {
-        content: 'x';
-        background: #ffd8bb;
-        width: 13px;
-        display: inline-block;
-        height: 13px;
-        line-height: 0.4; }
   #sidebar #charachters .robot {
-    width: 75px;
+    width: 48px;
     position: relative; }
     #sidebar #charachters .robot .lh {
       position: absolute;
-      width: 21%;
+      width: 31%;
       top: 52%;
-      left: -1.5%;
+      left: -25.5%;
       transform-origin: 50% 0;
       transition: 0.3s; }
     #sidebar #charachters .robot .rh {
       position: absolute;
-      width: 21%;
+      width: 31%;
       top: 52%;
-      right: -7.5%;
+      right: -25.5%;
       transform-origin: 50% 0;
       transition: 0.3s; }
     #sidebar #charachters .robot .gun {
@@ -468,15 +430,27 @@ img {
       display: block;
       animation: pew 0.8s;
       animation-delay: 0.4s; }
-  #sidebar #charachters.celebrate_robot .human .die {
-    transition-delay: 1s;
-    opacity: 1; }
-  #sidebar #charachters.celebrate_human .human .lh {
-    transform: rotate(70deg); }
-  #sidebar #charachters.celebrate_human .human .rh {
-    transform: rotate(-70deg); }
-  #sidebar #charachters.celebrate_human .human .mouth {
-    display: block; }
+  #sidebar #charachters.celebrate_human .human {
+    animation: bounce 2s; }
+    #sidebar #charachters.celebrate_human .human .bounce {
+      animation-name: bounce;
+      animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1); }
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0); }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0); }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-50px); }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0); }
+  57% {
+    transform: scale(1, 1) translateY(-7px); }
+  64% {
+    transform: scale(1, 1) translateY(0); }
+  100% {
+    transform: scale(1, 1) translateY(0); } }
 
 #sidebar p {
   font-family: 'Raleway', sans-serif;
