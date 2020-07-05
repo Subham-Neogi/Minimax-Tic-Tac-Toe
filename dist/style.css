@@ -377,40 +377,40 @@ img {
   100% {
     opacity: 0; } }
 
-#sidebar #charachters {
+#sidebar #characters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 70px;
   position: relative; }
-  #sidebar #charachters .human {
+  #sidebar #characters .human {
     width: 120px;
     position: relative; }
-  #sidebar #charachters .robot {
+  #sidebar #characters .robot {
     width: 48px;
     position: relative; }
-    #sidebar #charachters .robot .lh {
+    #sidebar #characters .robot .lh {
       position: absolute;
       width: 31%;
       top: 52%;
       left: -25.5%;
       transform-origin: 50% 0;
       transition: 0.3s; }
-    #sidebar #charachters .robot .rh {
+    #sidebar #characters .robot .rh {
       position: absolute;
       width: 31%;
       top: 52%;
       right: -25.5%;
       transform-origin: 50% 0;
       transition: 0.3s; }
-    #sidebar #charachters .robot .gun {
+    #sidebar #characters .robot .gun {
       width: 159%;
       transform: rotate(-90deg) scale(0);
       position: absolute;
       bottom: -43%;
       left: -63%;
       transition: 0.2s; }
-      #sidebar #charachters .robot .gun:after {
+      #sidebar #characters .robot .gun:after {
         content: '';
         position: absolute;
         height: 400px;
@@ -422,17 +422,17 @@ img {
         box-shadow: 0px 0px 3px #f00;
         display: none;
         opacity: 0; }
-  #sidebar #charachters.celebrate_robot .robot .lh {
+  #sidebar #characters.celebrate_robot .robot .lh {
     transform: rotate(106deg); }
-  #sidebar #charachters.celebrate_robot .robot .gun {
+  #sidebar #characters.celebrate_robot .robot .gun {
     transform: rotate(-90deg) scale(1); }
-    #sidebar #charachters.celebrate_robot .robot .gun:after {
+    #sidebar #characters.celebrate_robot .robot .gun:after {
       display: block;
       animation: pew 0.8s;
       animation-delay: 0.4s; }
-  #sidebar #charachters.celebrate_human .human {
+  #sidebar #characters.celebrate_human .human {
     animation: bounce 2s; }
-    #sidebar #charachters.celebrate_human .human .bounce {
+    #sidebar #characters.celebrate_human .human .bounce {
       animation-name: bounce;
       animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1); }
 
