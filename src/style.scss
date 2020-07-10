@@ -86,11 +86,14 @@ img {
 	    margin-bottom: 70px;
 	    position: relative;
 		.human {
-			width: 120px;
+			width: 100px;
 			position: relative;
 		}
+		.human_2 {
+			display: none;
+		}
 		.robot {
-			width: 48px;
+			width: 40px;
 			position: relative;
 			.lh {
 				position: absolute;
@@ -163,6 +166,35 @@ img {
 				}
 			}
 		}
+		&.celebrate_human_2{
+			.human_2 {
+				animation: bounce 2s;
+				.bounce {
+					animation-name: bounce;
+					animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    			}
+				@keyframes bounce {
+					0%   { transform: scale(1,1)      translateY(0); }
+					10%  { transform: scale(1.1,.9)   translateY(0); }
+					30%  { transform: scale(.9,1.1)   translateY(-50px); }
+					50%  { transform: scale(1.05,.95) translateY(0); }
+					57%  { transform: scale(1,1)      translateY(-7px); }
+					64%  { transform: scale(1,1)      translateY(0); }
+					100% { transform: scale(1,1)      translateY(0); }
+				}
+			}
+		}
+		&.invisible {
+			.human_2 {
+				width: 105px;
+				padding-left: 10px;
+				position: relative;
+				display: inline;
+			}
+			.robot{
+				display: none;
+			}
+		}
 	}
 	p {
 		font-family: 'Raleway', sans-serif;
@@ -208,6 +240,46 @@ img {
 			ul li {
 				width: 50%;
 				text-align: center;
+			}
+		}
+		label {
+			font-weight: 600;
+			margin-bottom: 15px;
+			display: block;
+		}
+	}
+	#vs_computer_field {
+		&.invisible {
+			display: none;
+		}
+	}
+	.game_mode_field {
+		margin-bottom: 30px;
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			border: 2px solid #f59838;
+   			border-radius: 2px;
+   			overflow: hidden;
+		    font-size: 11px;
+			li {
+				float: left;
+				padding: 10px 15px;
+				border-right: 1px solid #f59838;
+			    cursor: pointer;
+			    color: #8c8c8c;
+			    &:hover {
+			    	background-color: #f5b26c;
+					color: #fff;
+			    }
+				&.active {
+					background-color: #f59645;
+					color: #fff;
+				}
+				&:last-child {
+					border-right: none;
+				}
 			}
 		}
 		label {

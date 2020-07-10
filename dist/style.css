@@ -384,10 +384,12 @@ img {
   margin-bottom: 70px;
   position: relative; }
   #sidebar #characters .human {
-    width: 120px;
+    width: 100px;
     position: relative; }
+  #sidebar #characters .human_2 {
+    display: none; }
   #sidebar #characters .robot {
-    width: 48px;
+    width: 40px;
     position: relative; }
     #sidebar #characters .robot .lh {
       position: absolute;
@@ -451,6 +453,34 @@ img {
     transform: scale(1, 1) translateY(0); }
   100% {
     transform: scale(1, 1) translateY(0); } }
+  #sidebar #characters.celebrate_human_2 .human_2 {
+    animation: bounce 2s; }
+    #sidebar #characters.celebrate_human_2 .human_2 .bounce {
+      animation-name: bounce;
+      animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1); }
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0); }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0); }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-50px); }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0); }
+  57% {
+    transform: scale(1, 1) translateY(-7px); }
+  64% {
+    transform: scale(1, 1) translateY(0); }
+  100% {
+    transform: scale(1, 1) translateY(0); } }
+  #sidebar #characters.invisible .human_2 {
+    width: 105px;
+    padding-left: 10px;
+    position: relative;
+    display: inline; }
+  #sidebar #characters.invisible .robot {
+    display: none; }
 
 #sidebar p {
   font-family: 'Raleway', sans-serif;
@@ -490,6 +520,38 @@ img {
     width: 50%;
     text-align: center; }
   #sidebar .field label {
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block; }
+
+#sidebar #vs_computer_field.invisible {
+  display: none; }
+
+#sidebar .game_mode_field {
+  margin-bottom: 30px; }
+  #sidebar .game_mode_field ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 2px solid #f59838;
+    border-radius: 2px;
+    overflow: hidden;
+    font-size: 11px; }
+    #sidebar .game_mode_field ul li {
+      float: left;
+      padding: 10px 15px;
+      border-right: 1px solid #f59838;
+      cursor: pointer;
+      color: #8c8c8c; }
+      #sidebar .game_mode_field ul li:hover {
+        background-color: #f5b26c;
+        color: #fff; }
+      #sidebar .game_mode_field ul li.active {
+        background-color: #f59645;
+        color: #fff; }
+      #sidebar .game_mode_field ul li:last-child {
+        border-right: none; }
+  #sidebar .game_mode_field label {
     font-weight: 600;
     margin-bottom: 15px;
     display: block; }
