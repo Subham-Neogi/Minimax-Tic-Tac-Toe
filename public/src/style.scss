@@ -56,7 +56,7 @@ img {
 }
 
 #newgame {
-    background-color: #f54323;
+    background-color: #f88622;
     border: none;
     padding: 13px 26px;
     border-radius: 2px;
@@ -205,13 +205,13 @@ img {
 			margin: 0;
 			padding: 0;
 			list-style: none;
+			width: max-content;
 			border: 1px solid #f59838;
    			border-radius: 2px;
    			overflow: hidden;
 		    font-size: 1em;
 			li {
 				float: left;
-				width: max-content;
 				padding: 10px 15px;
 				border-right: 1px solid #f59838;
 			    cursor: pointer;
