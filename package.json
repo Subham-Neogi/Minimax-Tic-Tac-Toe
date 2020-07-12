@@ -1,13 +1,17 @@
 {
-  "name": "tic-tac-toe",
+  "name": "minimax-tic-tac-toe",
   "version": "1.0.0",
   "description": "Tic Tac Toe implementation with Javascript ES2015",
-  "main": "index.js",
+  "engines": {
+    "node": "13.x"
+  },
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "build": "webpack",
     "serve": "webpack-dev-server"
   },
-  "author": "themegasm",
+  "author": "Subham-Neogi",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -23,6 +27,16 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "normalize.css": "^8.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Subham-Neogi/Minimax-Tic-Tac-Toe"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
 }

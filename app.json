@@ -1,0 +1,8 @@
+{
+  "name": "Minimax-Tic-Tac-Toe",
+  "description": "Using Minimax algorithm to build an unbeatable Tic Tac Toe game powered by AI.",
+  "repository": "https://github.com/Subham-Neogi/Minimax-Tic-Tac-Toe",
+  "logo": "https://www.shutterstock.com/image-vector/tic-tac-toe-game-linear-outline-1702010821",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
