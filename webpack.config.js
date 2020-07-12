@@ -4,7 +4,7 @@ const extractSass = new ExtractTextPlugin('style.css');
 
 module.exports = {
 	entry: {
-		bundle: '.public/src/index.js',
+		bundle: './public/src/index.js',
 	},
   	output: {
 	    path: path.join(__dirname, 'public', 'dist'),
