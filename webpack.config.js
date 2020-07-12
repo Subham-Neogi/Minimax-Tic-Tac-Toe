@@ -4,10 +4,10 @@ const extractSass = new ExtractTextPlugin('style.css');
 
 module.exports = {
 	entry: {
-		bundle: './src/index.js',
+		bundle: '.public/src/index.js',
 	},
   	output: {
-	    path: path.join(__dirname, 'dist'),
+	    path: path.join(__dirname, 'public', 'dist'),
 	    filename: '[name].js',
 	    publicPath: 'dist/'
   	},
