@@ -326,6 +326,10 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 		let first_choice = p.startingMove(b);
 		canvas.addClass(html_cells[first_choice], 'x');
 		player_turn = 1; //Switch turns
+	} else if (game_mode == 0) {
+		starting = 1;
+		maximizing = 1;
+		player_turn = 1;
 	}
 
 	//Adding Click event listener for each cell

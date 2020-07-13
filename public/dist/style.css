@@ -350,16 +350,25 @@ img {
     justify-content: center; }
 
 #newgame {
-  background-color: #f88622;
+  background-color: #f59838;
   border: none;
   padding: 13px 26px;
-  border-radius: 2px;
+  border-radius: 6px;
   color: #ffffff;
   font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
   cursor: pointer;
   font-weight: 600;
   width: 100%;
-  margin-top: 10px; }
+  margin-top: 10px;
+  box-shadow: 0 9px #f5680b; }
+  #newgame:focus {
+    outline: 0px; }
+  #newgame:hover {
+    background-color: #f07306ec; }
+  #newgame:active {
+    background-color: #f5680b;
+    box-shadow: 0 5px #f03b04;
+    transform: translateY(4px); }
 
 @-webkit-keyframes pew {
   0% {
@@ -397,7 +406,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   position: relative; }
   #sidebar #characters .human {
     width: 100px;
@@ -469,7 +478,7 @@ img {
 #sidebar p {
   font-family: 'Raleway', sans-serif;
   text-align: center;
-  font-size: 13px;
+  font-size: 1em;
   font-weight: 300;
   color: #b3b3b3; }
   #sidebar p a {
@@ -477,33 +486,32 @@ img {
     text-decoration: none; }
 
 #sidebar .field {
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
   #sidebar .field ul {
     margin: 0;
-    padding: 0;
+    padding-bottom: 1em;
+    padding-left: 0em;
     list-style: none;
     width: max-content;
-    border: 1px solid #f59838;
+    border: none;
     border-radius: 2px;
     overflow: hidden;
     font-size: 1em; }
     #sidebar .field ul li {
       float: left;
       padding: 10px 15px;
-      border-right: 1px solid #f59838;
+      margin-right: 0.4em;
+      border-radius: 6px;
+      background-color: #f59838;
       cursor: pointer;
-      color: #8c8c8c; }
+      color: #fff;
+      box-shadow: 0 9px #f5680b; }
       #sidebar .field ul li:hover {
-        background-color: #f5b26c;
-        color: #fff; }
+        background-color: #f07306ec; }
       #sidebar .field ul li.active {
-        background-color: #f59645;
-        color: #fff; }
-      #sidebar .field ul li:last-child {
-        border-right: none; }
-  #sidebar .field .starting_player_choices ul li {
-    width: 50%;
-    text-align: center; }
+        background-color: #f5680b;
+        box-shadow: 0 5px #f03b04;
+        transform: translateY(4px); }
   #sidebar .field label {
     font-weight: 600;
     margin-bottom: 15px;

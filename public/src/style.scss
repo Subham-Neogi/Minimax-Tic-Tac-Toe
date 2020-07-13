@@ -56,16 +56,31 @@ img {
 }
 
 #newgame {
-    background-color: #f88622;
-    border: none;
-    padding: 13px 26px;
-    border-radius: 2px;
-    color: #ffffff;
-    font-family:  "Helvetica Neue","Helvetica","Arial",sans-serif; ;
-    cursor: pointer;
-    font-weight: 600;
-    width: 100%;
-    margin-top: 10px;
+	background-color: #f59838;
+	border: none;
+	padding: 13px 26px;
+	border-radius: 6px;
+	color: #ffffff;
+	font-family:  "Helvetica Neue","Helvetica","Arial",sans-serif; ;
+	cursor: pointer;
+	font-weight: 600;
+	width: 100%;
+	margin-top: 10px;
+	box-shadow: 0 9px rgb(245, 104, 11);
+
+	&:focus {
+		outline: 0px;
+	}
+
+	&:hover {
+		background-color: #f07306ec;
+	}
+
+	&:active {
+		background-color: rgb(245, 104, 11);;
+		box-shadow: 0 5px rgb(240, 59, 4);
+		transform: translateY(4px);
+	}
 }
 
 @-webkit-keyframes pew {
@@ -93,7 +108,7 @@ img {
 		display: flex;
 	    justify-content: space-between;
 	    align-items: center;
-	    margin-bottom: 70px;
+	    margin-bottom: 40px;
 	    position: relative;
 		.human {
 			width: 100px;
@@ -191,7 +206,7 @@ img {
 	p {
 		font-family: 'Raleway', sans-serif;
 		text-align: center;
-		font-size: 13px;
+		font-size: 1em;
 		font-weight: 300;
 		color: #b3b3b3;
 		a {
@@ -200,39 +215,34 @@ img {
 		}
 	}
 	.field {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		ul {
 			margin: 0;
-			padding: 0;
+			padding-bottom: 1em;
+			padding-left: 0em;
 			list-style: none;
 			width: max-content;
-			border: 1px solid #f59838;
+			border: none;
    			border-radius: 2px;
    			overflow: hidden;
 		    font-size: 1em;
 			li {
 				float: left;
 				padding: 10px 15px;
-				border-right: 1px solid #f59838;
+				margin-right: 0.4em;
+				border-radius: 6px;
+				background-color: #f59838;
 			    cursor: pointer;
-			    color: #8c8c8c;
+				color: #fff;
+				box-shadow: 0 9px rgb(245, 104, 11);
 			    &:hover {
-			    	background-color: #f5b26c;
-					color: #fff;
-			    }
+			    	background-color: #f07306ec;
+				}
 				&.active {
-					background-color: #f59645;
-					color: #fff;
+					background-color: rgb(245, 104, 11);
+					box-shadow: 0 5px rgb(240, 59, 4);
+					transform: translateY(4px);
 				}
-				&:last-child {
-					border-right: none;
-				}
-			}
-		}
-		.starting_player_choices {
-			ul li {
-				width: 50%;
-				text-align: center;
 			}
 		}
 		label {
