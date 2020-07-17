@@ -258,6 +258,22 @@ img {
 	}
 }
 
+@keyframes grow_x {
+	0% { background-size: 30px 30px;}
+	25% { background-size: 60px 60px;}
+	50% { background-size: 90px 90px;}
+	75% { background-size: 100px 100px;}
+	100% { background-size: 120px 120px;}
+}
+
+@keyframes grow_o {
+	0% { background-size: 10px 10px;}
+	25% { background-size: 30px 30px;}
+	50% { background-size: 60px 60px;}
+	75% { background-size: 80px 80px;}
+	100% { background-size: 90px 90px;}
+}
+
 #board {
 	width: 460px;
 	height: 460px;
@@ -344,7 +360,7 @@ img {
         border: 1px solid #0f0801;
         position: relative;
         cursor: pointer;
-        &.x, &.o {
+        &.x, &.o, &.x_hint, &.o_hint {
 			cursor: not-allowed;
 			&:after {
 				position: absolute;
@@ -367,6 +383,16 @@ img {
         &.o:after {
 			content: '';
 			background-image: url(images/o.svg);
+		}
+		&.x_hint:after {
+			content: '';
+			background-image: url(images/x_hint.svg);
+			animation: grow_x 800ms infinite;
+		}
+		&.o_hint:after {
+			content: '';
+			background-image: url(images/o_hint.svg);
+			animation: grow_o 800ms infinite;
         }
 	}
 	.cell-0, .cell-1, .cell-2 {
@@ -380,5 +406,35 @@ img {
 	}
 	.cell-6, .cell-7, .cell-8 {
 		border-bottom: none;
+	}
+}
+
+#hint {
+	position: absolute;
+	top: 2em;
+	right: 2em;
+	background-color: transparent;
+	border-width: 2px;
+	border-color: #f59838;
+	padding: 5px 10px;
+	color: #f59838;
+	font-family:  "Helvetica Neue","Helvetica","Arial",sans-serif; ;
+	cursor: pointer;
+	font-weight: 600;
+	width: 8%;
+	margin-top: 10px;
+
+	&:focus {
+		outline: 0px;
+	}
+
+	&:hover {
+		border-color: #f07306ec;
+		color: #f07306ec;
+	}
+
+	&:active {
+		border-color: rgb(245, 104, 11);
+		color: rgb(245, 104, 11);
 	}
 }

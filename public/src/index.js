@@ -4,6 +4,7 @@ import Canvas from './classes/Canvas';
 import './style.scss';
 
 
+let hint_for = 'x', hint_position = -1;
 const canvas = new Canvas();
 
 function drawWinningLine({ direction, row }) {
@@ -12,11 +13,10 @@ function drawWinningLine({ direction, row }) {
 	setTimeout(() => { board.className += ' full'; }, 50);
 }
 
-
 //Starts a new game with a certain depth and a starting_player of 1 if human is going to start
 function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 	//Instantiating a new player and an empty board
-	let p = new Agent(parseInt(depth), parseInt(starting_player)==1? false: true);
+	let p = new Agent(parseInt(depth), starting_player==1? false: true);
 	let b = new Environment(['','','','','','','','','']);
 
 	//Clearing all #Board classes and populating cells HTML
@@ -33,7 +33,7 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 	let html_cells = [...board.children];
 
 	//Initializing some variables for internal use
-	let starting = parseInt(starting_player),
+	let starting = starting_player,
 		maximizing = starting,
 		player_turn = starting;
 
@@ -44,7 +44,6 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 		player_turn = 1; //Switch turns
 	}
 	else if (game_mode == 0) {
-		starting = 1;
 		maximizing = 1;
 		player_turn = 1;
 	}
@@ -52,18 +51,21 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 	//Adding Click event listener for each cell
   	b.state.forEach((cell, index) => {
   		html_cells[index].addEventListener('click', () => {
+			if (hint_position != -1) canvas.removeClass(html_cells[hint_position], hint_for+'_hint');
   			//If cell is already occupied or the board is in a terminal state or it's not humans turn, return false
   			if(canvas.hasClass(html_cells[index], 'x') || canvas.hasClass(html_cells[index], 'o') || b.isTerminal() || (!player_turn && game_mode == 1)) return false;
 
-			let symbol_human = 0, symbol_agent = 0;
+			let symbol_human = 'x', symbol_agent = 'o';
 			if (game_mode == 1)
 			{
 				symbol_human = maximizing ? 'x' : 'o'; //Maximizing player is always 'x'
+				hint_for = symbol_human;
 				symbol_agent = !maximizing ? 'x' : 'o';
 			}  
 			else
 			{
 				symbol_human = player_turn ? 'x' : 'o';
+				hint_for = !player_turn ? 'x' : 'o';
 			}
   			//Update the Board class instance as well as the Board UI
   			b.performAction({position: index, symbol: symbol_human});
@@ -108,6 +110,46 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
   	});
 }
 
+function getHint() {
+	let board = document.getElementById("board");
+	let p = new Agent(-1, hint_for == 'x'? false : true);
+	let current_state = [];
+
+	let html_cells = [...board.children];
+	let flag = true;
+
+	html_cells.forEach((cell, index) => {
+		if(canvas.hasClass(html_cells[index], 'x_hint') || canvas.hasClass(html_cells[index], 'o_hint')) {
+			flag = false;
+		}
+
+		if (canvas.hasClass(html_cells[index], 'x')) {
+			current_state[index] = 'x';
+		}
+		else if (canvas.hasClass(html_cells[index], 'o')) {
+			current_state[index] = 'o';
+		}
+		else {
+			current_state[index] = '';
+		}
+	});
+
+	let b = new Environment(current_state);
+	
+	if (b.isTerminal() || !flag) {
+		return false;
+	}
+
+	let percept_sequence = p.sensor(b);
+	//console.log(percept_sequence);
+	let nextBestPosition = p.agentFunction(percept_sequence);
+	//console.log(nextBestPosition);
+	canvas.addClass(html_cells[nextBestPosition], hint_for+'_hint');
+	hint_position = nextBestPosition;
+
+	return true;
+}
+
 document.addEventListener("DOMContentLoaded", event => { 
 
 	//Start a new game when page loads with default values
@@ -126,6 +168,7 @@ document.addEventListener("DOMContentLoaded", event => {
 		});
 		canvas.addClass(event.target, 'active');
 		depth = event.target.dataset.value;
+		depth = parseInt(depth);
 	}, false);
 
 	document.getElementById("starting_player").addEventListener("click", (event) => {
@@ -136,6 +179,7 @@ document.addEventListener("DOMContentLoaded", event => {
 		});
 		canvas.addClass(event.target, 'active');
 		starting_player = event.target.dataset.value;
+		starting_player = parseInt(starting_player);
 	}, false);
 
 	document.getElementById("game_mode").addEventListener("click", (event) => {
@@ -146,6 +190,7 @@ document.addEventListener("DOMContentLoaded", event => {
 		});
 		canvas.addClass(event.target, 'active');
 		game_mode = event.target.dataset.value;
+		game_mode = parseInt(game_mode);
 		if (game_mode == 0) {
 			canvas.addClass(document.getElementById("vs_computer_field"), 'invisible');
 			canvas.addClass(document.getElementById("characters"), 'invisible');
@@ -156,7 +201,13 @@ document.addEventListener("DOMContentLoaded", event => {
 		}
 	}, false);
 
+	document.getElementById("hint").addEventListener('click', () => {
+		getHint();
+	})
+
 	document.getElementById("newgame").addEventListener('click', () => {
+		hint_for = (!game_mode || starting_player)? 'x' : 'o';
+		hint_position = -1;
 		newGame(depth, starting_player, game_mode);
 	});
 

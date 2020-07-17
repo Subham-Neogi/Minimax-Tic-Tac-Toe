@@ -520,6 +520,30 @@ img {
 #sidebar #vs_computer_field.invisible {
   display: none; }
 
+@keyframes grow_x {
+  0% {
+    background-size: 30px 30px; }
+  25% {
+    background-size: 60px 60px; }
+  50% {
+    background-size: 90px 90px; }
+  75% {
+    background-size: 100px 100px; }
+  100% {
+    background-size: 120px 120px; } }
+
+@keyframes grow_o {
+  0% {
+    background-size: 10px 10px; }
+  25% {
+    background-size: 30px 30px; }
+  50% {
+    background-size: 60px 60px; }
+  75% {
+    background-size: 80px 80px; }
+  100% {
+    background-size: 90px 90px; } }
+
 #board {
   width: 460px;
   height: 460px;
@@ -583,9 +607,9 @@ img {
     border: 1px solid #0f0801;
     position: relative;
     cursor: pointer; }
-    #board [class^="cell-"].x, #board [class^="cell-"].o {
+    #board [class^="cell-"].x, #board [class^="cell-"].o, #board [class^="cell-"].x_hint, #board [class^="cell-"].o_hint {
       cursor: not-allowed; }
-      #board [class^="cell-"].x:after, #board [class^="cell-"].o:after {
+      #board [class^="cell-"].x:after, #board [class^="cell-"].o:after, #board [class^="cell-"].x_hint:after, #board [class^="cell-"].o_hint:after {
         position: absolute;
         width: calc(100% - 60px);
         height: calc(100% - 60px);
@@ -603,6 +627,14 @@ img {
     #board [class^="cell-"].o:after {
       content: '';
       background-image: url(../dist/assets/o.svg); }
+    #board [class^="cell-"].x_hint:after {
+      content: '';
+      background-image: url(../dist/assets/x_hint.svg);
+      animation: grow_x 800ms infinite; }
+    #board [class^="cell-"].o_hint:after {
+      content: '';
+      background-image: url(../dist/assets/o_hint.svg);
+      animation: grow_o 800ms infinite; }
   #board .cell-0, #board .cell-1, #board .cell-2 {
     border-top: none; }
   #board .cell-2, #board .cell-5, #board .cell-8 {
@@ -611,5 +643,28 @@ img {
     border-left: none; }
   #board .cell-6, #board .cell-7, #board .cell-8 {
     border-bottom: none; }
+
+#hint {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  background-color: transparent;
+  border-width: 2px;
+  border-color: #f59838;
+  padding: 5px 10px;
+  color: #f59838;
+  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+  width: 8%;
+  margin-top: 10px; }
+  #hint:focus {
+    outline: 0px; }
+  #hint:hover {
+    border-color: #f07306ec;
+    color: #f07306ec; }
+  #hint:active {
+    border-color: #f5680b;
+    color: #f5680b; }
 
 /*# sourceMappingURL=style.css.map*/
