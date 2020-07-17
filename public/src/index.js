@@ -112,7 +112,7 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 
 function getHint() {
 	let board = document.getElementById("board");
-	let p = new Agent(-1, hint_for == 'x'? false : true);
+	let p = new Agent(-1, hint_for == 'x'? true : false);
 	let current_state = [];
 
 	let html_cells = [...board.children];
