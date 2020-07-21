@@ -14,9 +14,9 @@ function drawWinningLine({ direction, row }) {
 }
 
 //Starts a new game with a certain depth and a starting_player of 1 if human is going to start
-function newGame(depth = -1, starting_player = 1, game_mode = 1) {
+function newGame(depth = -1, starting_player = 1, game_mode = 1, algo = 1) {
 	//Instantiating a new player and an empty board
-	let p = new Agent(parseInt(depth), starting_player==1? false: true);
+	let p = new Agent(starting_player==1? false: true, depth, algo==1? true: false);
 	let b = new Environment(['','','','','','','','','']);
 
 	//Clearing all #Board classes and populating cells HTML
@@ -112,7 +112,7 @@ function newGame(depth = -1, starting_player = 1, game_mode = 1) {
 
 function getHint() {
 	let board = document.getElementById("board");
-	let p = new Agent(-1, hint_for == 'x'? true : false);
+	let p = new Agent(hint_for == 'x'? true : false, -1, true);
 	let current_state = [];
 
 	let html_cells = [...board.children];
@@ -156,10 +156,30 @@ document.addEventListener("DOMContentLoaded", event => {
 	let depth = -1;
 	let starting_player = 1;
 	let game_mode = 1;
-	newGame(depth, starting_player, game_mode);
+	let algo = 1;
+	newGame(depth, starting_player, game_mode, algo);
 
 
 	//Events handlers for depth, starting player options
+	document.getElementById("algo").addEventListener("click", (event) => {
+		if(event.target.tagName !== "LI" || canvas.hasClass(event.target, 'active')) return
+		let algo_choices = [...document.getElementById("algo").children[0].children];
+		algo_choices.forEach((choice) => {
+			canvas.removeClass(choice, 'active');
+		});
+		canvas.addClass(event.target, 'active');
+		algo = event.target.dataset.value;
+		algo = parseInt(algo);
+		if (algo == 0) {
+			canvas.addClass(document.getElementById("depth_wrap"), 'hide');
+			canvas.removeClass(document.getElementById("q_learn_text"), 'hide');
+		}
+		else {
+			canvas.removeClass(document.getElementById("depth_wrap"), 'hide');
+			canvas.addClass(document.getElementById("q_learn_text"), 'hide');
+		}
+	}, false);
+
 	document.getElementById("depth").addEventListener("click", (event) => {
 		if(event.target.tagName !== "LI" || canvas.hasClass(event.target, 'active')) return
 		let depth_choices = [...document.getElementById("depth").children[0].children];
@@ -208,7 +228,7 @@ document.addEventListener("DOMContentLoaded", event => {
 	document.getElementById("newgame").addEventListener('click', () => {
 		hint_for = (!game_mode || starting_player)? 'x' : 'o';
 		hint_position = -1;
-		newGame(depth, starting_player, game_mode);
+		newGame(depth, starting_player, game_mode, algo);
 	});
 
 });

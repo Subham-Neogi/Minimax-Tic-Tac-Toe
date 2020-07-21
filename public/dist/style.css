@@ -520,6 +520,12 @@ img {
 #sidebar #vs_computer_field.invisible {
   display: none; }
 
+#sidebar #depth_wrap.hide {
+  display: none; }
+
+#sidebar #q_learn_text.hide {
+  display: none; }
+
 @keyframes grow_x {
   0% {
     background-size: 30px 30px; }
@@ -607,9 +613,9 @@ img {
     border: 1px solid #0f0801;
     position: relative;
     cursor: pointer; }
-    #board [class^="cell-"].x, #board [class^="cell-"].o, #board [class^="cell-"].x_hint, #board [class^="cell-"].o_hint {
+    #board [class^="cell-"].x, #board [class^="cell-"].o {
       cursor: not-allowed; }
-      #board [class^="cell-"].x:after, #board [class^="cell-"].o:after, #board [class^="cell-"].x_hint:after, #board [class^="cell-"].o_hint:after {
+      #board [class^="cell-"].x:after, #board [class^="cell-"].o:after {
         position: absolute;
         width: calc(100% - 60px);
         height: calc(100% - 60px);
@@ -621,6 +627,18 @@ img {
         bottom: 0;
         left: 0;
         right: 0; }
+    #board [class^="cell-"].x_hint:after, #board [class^="cell-"].o_hint:after {
+      position: absolute;
+      width: calc(100% - 60px);
+      height: calc(100% - 60px);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 50% 50%;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
     #board [class^="cell-"].x:after {
       content: '';
       background-image: url(../dist/assets/x.svg); }

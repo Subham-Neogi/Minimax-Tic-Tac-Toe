@@ -256,6 +256,16 @@ img {
 			display: none;
 		}
 	}
+	#depth_wrap {
+		&.hide {
+			display: none;
+		}
+	}
+	#q_learn_text {
+		&.hide {
+			display: none;
+		}
+	}
 }
 
 @keyframes grow_x {
@@ -360,7 +370,7 @@ img {
         border: 1px solid #0f0801;
         position: relative;
         cursor: pointer;
-        &.x, &.o, &.x_hint, &.o_hint {
+        &.x, &.o {
 			cursor: not-allowed;
 			&:after {
 				position: absolute;
@@ -375,7 +385,22 @@ img {
 				left: 0;
 				right: 0;
 			}
-        }
+		}
+		&.x_hint, &.o_hint {
+			&:after {
+				position: absolute;
+				width: calc(100% - 60px);
+				height: calc(100% - 60px);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: 50% 50%;
+				margin: auto;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+		}
+	}
         &.x:after {
 			content: '';
 			background-image: url(images/x.svg);
