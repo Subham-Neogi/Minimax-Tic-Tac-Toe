@@ -1,3 +1,8 @@
+/**
+ * @desc This class defines the Environmnet with which our Agent will interact with
+ * This contains the "Board" as well as auxiliary functions to access the "Board" and to change it.
+ * @param {Array} state The cells 0 to 8 of the tic tac toe board in row major fashion. 
+ */
 class Environment {
 
     constructor(state = ['','','','','','','','','']) {
@@ -55,14 +60,24 @@ class Environment {
         return false;
     }
 
+    /**
+     * @desc Places symbol in the given position
+     * @param {Object} action contains fields position and symbol
+     * @return {Boolean} true if insertion succeeds else false
+     */
     performAction(action) {
         if(action.position > 8 || this.state[action.position]) return false; //Cell is either occupied or does not exist
         this.state[action.position] = action.symbol;
         return true;
     }
 
+    /**
+     * @desc Gathers information about the board and sends it to the agent.
+     * @return {Object} the percept object with all necessary information
+     */
     getPercept() {
         const percept = {moves: [], isTerminal: false, winner: '', state: this.state};
+        //iterating over the board to find available moves
         this.state.forEach((cell, index) => {
             if(!cell) percept.moves.push(index); 
         });

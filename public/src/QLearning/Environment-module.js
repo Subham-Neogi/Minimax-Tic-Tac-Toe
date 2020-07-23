@@ -1,3 +1,6 @@
+/**
+ * @desc same as ../classes/Environment.js but exported as a node module to be consumed by QLearner.js 
+ */
 module.exports = class Environment {
 
     constructor(state = ['','','','','','','','','']) {
