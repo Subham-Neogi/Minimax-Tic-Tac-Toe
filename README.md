@@ -5,7 +5,7 @@ This project is done for [Microsoft The Mars Colonization Project](https://micro
 ## Additional Points
 
 The project implements a Tic-Tac-Toe playing agent. The agent uses - 
-1. [Minimax Algoritm](https://en.wikipedia.org/wiki/Minimax)
+1. [Minimax Algorithm](https://en.wikipedia.org/wiki/Minimax)
 2. [Q-Learning](https://en.wikipedia.org/wiki/Q-learning)
 
 You can -
