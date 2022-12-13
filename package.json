@@ -25,7 +25,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "normalize.css": "^8.0.1",
     "random": "^2.2.0"
   },
